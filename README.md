@@ -1,0 +1,2 @@
+## Smart Charger Simulation ##
+Simulating a smart charger using C++ to simulate communication with the battery and updating its status and python to simulate saving the data collected and sending it to be studied.

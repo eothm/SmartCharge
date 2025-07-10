@@ -1,0 +1,13 @@
+{
+    "mqtt": {
+      "broker": "localhost",
+      "port": 1883,
+      "topic": "smartchargehub/battery/status"
+    },
+    "thresholds": {
+      "max_voltage": 4.2,
+      "min_voltage": 3.0,
+      "max_temperature": 60.0
+    }
+  }
+  
