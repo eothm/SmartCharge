@@ -1,0 +1,3 @@
+/home/eothmane/SmartChargeHub/build/CMakeFiles/SmartChargeHub.dir
+/home/eothmane/SmartChargeHub/build/CMakeFiles/edit_cache.dir
+/home/eothmane/SmartChargeHub/build/CMakeFiles/rebuild_cache.dir

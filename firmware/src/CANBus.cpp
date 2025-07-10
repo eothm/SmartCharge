@@ -1,7 +1,10 @@
 #include "CANBus.h"
 #include <cstring>    
 #include <sstream>
-#include <iomanip>   
+#include <iomanip>  
+#include <cstdint>
+#include <array>
+#include <cstring> 
 
 std::string CANFrame::toString() const {
     std::ostringstream oss;
@@ -12,17 +15,25 @@ std::string CANFrame::toString() const {
     return oss.str();
 }
 
-static void packFloat(std::array<uint8_t, 8>& buffer, float value, size_t offset) {
-    if (offset + sizeof(float) > buffer.size()) return;
-    std::memcpy(&buffer[offset], &value, sizeof(float));
+static void packUint16(std::array<uint8_t,8>& buffer, uint16_t value, size_t offset) {
+    buffer[offset] = static_cast<uint8_t>(value & 0xFF);
+    buffer[offset + 1] = static_cast<uint8_t>((value >> 8) & 0xFF);
 }
 
 CANFrame encodeBatteryStatus(float voltage, float current, float temperature) {
     CANFrame frame;
-    frame.id = 0x101; 
+    frame.id = 0x101;
+    frame.length = 6; 
 
-    packFloat(frame.data, voltage, 0);    
-    packFloat(frame.data, current, 4);      
+    uint16_t v = static_cast<uint16_t>(voltage * 100);
+    uint16_t i = static_cast<uint16_t>(current * 100);
+    uint16_t t = static_cast<uint16_t>((temperature + 40) * 100);
+
+    packUint16(frame.data, v, 0);
+    packUint16(frame.data, i, 2);
+    packUint16(frame.data, t, 4);
 
     return frame;
 }
+
+

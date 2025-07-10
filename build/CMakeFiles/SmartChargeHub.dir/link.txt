@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/SmartChargeHub.dir/firmware/src/BatteryPack.cpp.o CMakeFiles/SmartChargeHub.dir/firmware/src/CANBus.cpp.o CMakeFiles/SmartChargeHub.dir/firmware/src/main.cpp.o -o SmartChargeHub 
